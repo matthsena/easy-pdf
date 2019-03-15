@@ -1,0 +1,12 @@
+{
+    "name": "matheus/easy-pdf",
+    "authors": [
+        {
+            "name": "Matheus",
+            "email": "matheusalexandre.sena99@gmail.com"
+        }
+    ],
+    "require": {
+        "mpdf/mpdf": "^7.1"
+    }
+}
