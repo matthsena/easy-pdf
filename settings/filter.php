@@ -9,7 +9,9 @@ class Filter {
 
         function filterValue ($value) {
 
-                if (isset[$_REQUEST[$value]]) return $_REQUEST[$value];
+		if (isset[$_REQUEST[$value]) {
+			return $_REQUEST[$value];
+		}
 		else return false;
 
         }

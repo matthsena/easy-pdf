@@ -2,28 +2,24 @@
 
 require_once './vendor/autoload.php';
 require_once './settings/interface.php';
-require_once './settings/filter.php';
 
 $mpdf = new \Mpdf\Mpdf();
-$filter = new Filter;
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
 {
-        private $content;
-        private $showWatermark = false;
-        private $watermarkSrc;
+        $content = '';
+        $showWatermark = false;
+        $watermarkSrc = '';
 
         function setContent ($param) {
 
-                $this->content = $filter->filterValue('content');
-
+                $this->content = $param;
                 if (!$this->content) throw Exception('Content is empty!!');
         }
 
         function setWatermark ($param) {
 
-                $this->watermarkSrc = $filter->filterValue('watermark');
-
+                $this->watermarkSrc = $param;
                 if ($this->watermarkSrc) $this->showWatermark = true;
 	}
 
