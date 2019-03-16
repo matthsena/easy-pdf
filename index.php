@@ -7,32 +7,43 @@ $mpdf = new \Mpdf\Mpdf();
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
 {
-        $content = '';
-        $showWatermark = false;
-        $watermarkSrc = '';
+        $content = (isset($_REQUEST['content'])) ? $_REQUEST['content'] : false;
+        $showWatermark = (isset($_REQUEST['showwm'])) ? $_REQUEST['showwm'] : false;
+        $watermarkSrc = (isset($_REQUEST['wmsrc'])) ? $_REQUEST['wmsrc'] : false;
 
-        function setContent ($param) {
-
-                $this->content = $param;
-                if (!$this->content) throw Exception('Content is empty!!');
+        if ($content) {
+                if ($showWatermark) {
+                        $mpdf->SetWatermarkImage($watermarkSrc);
+                        $mpdf->showWatermark = true;
+                }
+                
+                $mpdf->WriteHTML($content);
+                $mpdf->Output();
+        } else {
+                echo "Sem conteudo";
         }
+        // function setContent ($param) {
 
-        function setWatermark ($param) {
+        //         $this->content = $param;
+        //         if (!$this->content) throw Exception('Content is empty!!');
+        // }
 
-                $this->watermarkSrc = $param;
-                if ($this->watermarkSrc) $this->showWatermark = true;
-	}
+        // function setWatermark ($param) {
 
-	function genPDF () {
-		if ($this->showWatermask == true) 
-		{
-			$mpdf->SetWatermarkImage($this->watermarkSrc);
-			$mpdf->showWatermark = true;
-			$mpdf->WriteHTML($this->content);
-			$mpdf->Output();
+        //         $this->watermarkSrc = $param;
+        //         if ($this->watermarkSrc) $this->showWatermark = true;
+	// }
+
+	// function genPDF () {
+	// 	if ($this->showWatermask == true) 
+	// 	{
+	// 		$mpdf->SetWatermarkImage($this->watermarkSrc);
+	// 		$mpdf->showWatermark = true;
+	// 		$mpdf->WriteHTML($this->content);
+	// 		$mpdf->Output();
 		
-		}
-	}
+	// 	}
+	// }
 
 
 }
