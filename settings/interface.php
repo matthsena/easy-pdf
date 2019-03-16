@@ -6,14 +6,14 @@
  *
  */
 
-interface iPdf 
+interface iPDF 
 {
-	public function setContent ($content);
+	public function setContent (string $content);
 	
-	public function setWatermark ($imgSrc);
+	public function setWatermark (string $imgSrc);
 
-	public function genPDF ();
-	
+	public function buildPFD ();
+
 
 }
 

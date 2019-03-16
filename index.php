@@ -1,51 +1,8 @@
 <?php
 
-require_once './vendor/autoload.php';
-require_once './settings/interface.php';
+require_once './GetPDF.php';
 
-$mpdf = new \Mpdf\Mpdf();
-
-if ($_SERVER['REQUEST_METHOD'] == 'GET')
-{
-        $content = (isset($_REQUEST['content'])) ? $_REQUEST['content'] : false;
-        $showWatermark = (isset($_REQUEST['showwm'])) ? $_REQUEST['showwm'] : false;
-        $watermarkSrc = (isset($_REQUEST['wmsrc'])) ? $_REQUEST['wmsrc'] : false;
-
-        if ($content) {
-                if ($showWatermark) {
-                        $mpdf->SetWatermarkImage($watermarkSrc);
-                        $mpdf->showWatermark = true;
-                }
-                
-                $mpdf->WriteHTML($content);
-                $mpdf->Output();
-        } else {
-                echo "Sem conteudo";
-        }
-        // function setContent ($param) {
-
-        //         $this->content = $param;
-        //         if (!$this->content) throw Exception('Content is empty!!');
-        // }
-
-        // function setWatermark ($param) {
-
-        //         $this->watermarkSrc = $param;
-        //         if ($this->watermarkSrc) $this->showWatermark = true;
-	// }
-
-	// function genPDF () {
-	// 	if ($this->showWatermask == true) 
-	// 	{
-	// 		$mpdf->SetWatermarkImage($this->watermarkSrc);
-	// 		$mpdf->showWatermark = true;
-	// 		$mpdf->WriteHTML($this->content);
-	// 		$mpdf->Output();
-		
-	// 	}
-	// }
-
-
-}
-
+$pdf = new GetPDF;
+$pdf->setContent('<h2>aaaaaaaaaaaa</h2><p>la la la</p>');
+$pdf->buildPDF();
 ?>
