@@ -1,0 +1,4 @@
+<Files "hash.txt">  
+  Order Allow,Deny
+  Deny from all
+</Files>
