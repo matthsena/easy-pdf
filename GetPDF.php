@@ -50,10 +50,5 @@ class GetPDF  {
         throw new Exepction ($msg);
     }
 
-    
-
-
-
 }
-
 ?>
