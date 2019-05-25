@@ -18,6 +18,12 @@ class GetPDF  {
         $this->content = (isset($_REQUEST['content'])) ? $_REQUEST['content'] : $content;
 
     }
+
+    public function getContent () {
+
+        return $this->content;
+
+    }
     
     public function setWatermark (string $imgSrc) {
 
